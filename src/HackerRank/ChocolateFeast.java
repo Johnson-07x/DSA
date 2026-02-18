@@ -13,14 +13,11 @@ public class ChocolateFeast {
         int tradeValue = sc.nextInt();
 
         int wrapperCount = money / cost;
-        int totalChocolate = 0;
+        int totalChocolate = wrapperCount;
         while (wrapperCount >= tradeValue) {
-            totalChocolate += wrapperCount;
-            if ((wrapperCount % tradeValue) != 0) {
-                wrapperCount /= tradeValue + 1;
-            } else {
-                wrapperCount /= tradeValue;
-            }
+            int freeChocolate = wrapperCount / tradeValue;
+            totalChocolate += freeChocolate;
+            wrapperCount = (wrapperCount % tradeValue) + freeChocolate;
         }
         System.out.println(totalChocolate);
     }
