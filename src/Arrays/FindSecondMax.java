@@ -1,4 +1,4 @@
-package Basics;
+package Arrays;
 
 public class FindSecondMax {
     static void main(String[] args) {

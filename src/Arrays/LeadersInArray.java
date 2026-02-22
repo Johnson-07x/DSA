@@ -1,4 +1,4 @@
-package Basics;
+package Arrays;
 
 public class LeadersInArray {
     static void main(String[] args) {
