@@ -14,7 +14,7 @@ public class NumOfRepeatingChars {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] != 0) {
                 char ch = (char) (97 + i);
-                System.out.println(ch + " " + " -> " + " " + arr[i]);
+                System.out.println(ch + " -> " + arr[i]);
             }
         }
     }
