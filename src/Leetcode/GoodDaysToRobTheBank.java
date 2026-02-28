@@ -7,9 +7,7 @@ class Solution16 {
     public List<Integer> goodDaysToRobBank(int[] security, int time) {
         List<Integer> list = new ArrayList<>();
         for (int i = time; i < security.length - time; i++) {
-            if (security[i - time] >= security[i] && security[i] <= security[i + time]) {
-                list.add(i);
-            }
+
         }
         return list;
     }
