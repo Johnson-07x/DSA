@@ -1,4 +1,4 @@
-package Arrays;
+package SlidingWindow;
 
 public class MaxProductSubArray {
     static void main(String[] args) {
