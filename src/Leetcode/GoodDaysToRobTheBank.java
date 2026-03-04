@@ -1,24 +1,39 @@
 package Leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-class Solution16 {
-    public List<Integer> goodDaysToRobBank(int[] security, int time) {
-        List<Integer> list = new ArrayList<>();
-        for (int i = time; i < security.length - time; i++) {
+// Leetcode no.2100
+public class GoodDaysToRobTheBank {
+    static public List<Integer> goodDaysToRobBank(int[] security, int time) {
+        int length = security.length;
+        int[] des = new int[length];
+        int[] inc = new int[length];
 
+        for (int i = 1; i < length; i++) {
+            if (security[i - 1] >= security[i]) {
+                des[i] = des[i - 1] + 1;
+            }
+        }
+        for (int i = length - 1; i > 0 ; i--) {
+            if (security[i] >= security[i - 1]) {
+                inc[i - 1] = inc[i] + 1;
+            }
+        }
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            if (des[i] >= time && inc[i] >= time) {
+                list.add(i);
+            }
         }
         return list;
     }
-}
 
-public class GoodDaysToRobTheBank {
     static void main(String[] args) {
-        int[] security = {1,2,5,4,1,0,2,4,5,3,1,2,4,3,2,4,8};
+        int[] security = {5,3,3,3,5,6,2};
         int time = 2;
-        Solution16 s16 = new Solution16();
-        List<Integer> result = s16.goodDaysToRobBank(security, time);
+        List<Integer> result = goodDaysToRobBank(security, time);
         System.out.println(result);
     }
 }
