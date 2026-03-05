@@ -2,6 +2,7 @@ package Leetcode;
 
 import java.util.LinkedList;
 
+// Leetcode no.3
 public class LongestSubstringWithoutRepeatingChars {
     static public int lengthOfLongestSubstring(String s) {
         LinkedList<Character> window = new LinkedList<>();

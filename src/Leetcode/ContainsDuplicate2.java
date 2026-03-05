@@ -4,8 +4,11 @@ package Leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
+// Leetcode no.219
 public class ContainsDuplicate2 {
     static public boolean containsNearbyDuplicate(int[] nums, int k) {
+        if (nums.length <= 1)
+            return false;
         Map<Integer, Integer> map = new HashMap<>();
         int absolute = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+// Leetcode no.202
 public class HappyNumber {
     static public boolean isHappy(int n) {
         Map<Integer, Integer> map = new HashMap<>();
