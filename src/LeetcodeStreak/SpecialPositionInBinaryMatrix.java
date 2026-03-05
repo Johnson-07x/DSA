@@ -1,5 +1,6 @@
 package LeetcodeStreak;
 
+// Leetcode no.1582
 public class SpecialPositionInBinaryMatrix {
     static public int numSpecial(int[][] mat) {
         int m = mat.length;
