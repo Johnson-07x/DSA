@@ -1,6 +1,5 @@
 package Leetcode.LinkedList;
 
-// to be continued../
 // Leetcode no.2
 public class AddTwoNumbers {
     static public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
