@@ -4,36 +4,28 @@ package Leetcode.LinkedList;
 // Leetcode no.2
 public class AddTwoNumbers {
     static public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int l1Sum = 0;
-        int power = 1;
-        while (l1 != null) {
-            l1Sum += l1.val * power;
-            power *= 10;
-            l1 = l1.next;
-        }
-        int l2Sum = 0;
-        power = 1;
-        while (l2 != null) {
-            l2Sum += l2.val * power;
-            power *= 10;
-            l2 = l2.next;
-        }
-        System.out.println(l1Sum);
-        System.out.println(l2Sum);
-        int grandSum = l1Sum + l2Sum;
-
         ListNode dummy = new ListNode(0);
-        ListNode temp = dummy;
-        while (grandSum > 0) {
-            int n = grandSum % 10;
-            ListNode newNode = new ListNode(n);
-            temp.next = newNode;
-            temp = newNode;
-            grandSum /= 10;
+        ListNode current = dummy;
+        int carry = 0;
+
+        while (l1 != null || l2 != null || carry != 0) {
+            int sum = carry;
+
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
+            }
+
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
+            }
+
+            carry = sum / 10; // Extract the carry (e.g., 12 / 10 = 1)
+            current.next = new ListNode(sum % 10); // Store the digit (e.g., 12 % 10 = 2)
+            current = current.next;
         }
-        if (dummy.next == null) {
-            return dummy;
-        }
+
         return dummy.next;
     }
 
