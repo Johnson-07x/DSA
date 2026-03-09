@@ -10,21 +10,25 @@ class Node {
 }
 
 class Operations {
+    int size = 0;
     Node head;
     void insertAtBeginning(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
+            size++;
             return;
         }
         newNode.next = head;
         head = newNode;
+        size++;
     }
 
     void insertAtEnd(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
+            size++;
             return;
         }
         Node temp = head;
@@ -32,6 +36,7 @@ class Operations {
             temp = temp.next;
         }
         temp.next = newNode;
+        size++;
     }
 
     void insertAtPosition(int index, int data) {
@@ -111,6 +116,7 @@ public class LinkedList {
         op.removeAtBeginning();
         op.display();
         op.removeAtEnd();
+        op.insertAtPosition(1, 40);
         op.display();
 
         op.reverseList();
