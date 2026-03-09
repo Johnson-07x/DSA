@@ -34,6 +34,26 @@ class Operations {
         temp.next = newNode;
     }
 
+    void insertAtPosition(int index, int data) {
+        if (index == 0) {
+            insertAtBeginning(data);
+            return;
+        }
+        if (index == size) {
+            insertAtEnd(data);
+            return;
+        }
+
+        Node temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+
+        Node newNode = new Node(data);
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
     void removeAtBeginning() {
         if (head == null) {
             return;
