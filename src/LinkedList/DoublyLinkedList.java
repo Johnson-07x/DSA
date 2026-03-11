@@ -44,6 +44,14 @@ class Operations2 {
         size++;
     }
 
+    public void insertFromArray(int[] arr) {
+        if (arr == null || arr.length == 0) return;
+        for (int value : arr) {
+            insertAtEnd(value);
+        }
+    }
+
+
     public void insertAtPosition(int index, int data) {
         if (index < 0 || index > size) return;
         if (index == 0) {
