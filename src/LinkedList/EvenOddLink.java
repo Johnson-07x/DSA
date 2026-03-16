@@ -1,54 +1,32 @@
 package LinkedList;
 
-// to be continued.../
 public class EvenOddLink {
     static DoublyListNode evenOddLink(DoublyListNode head) {
-        if (head == null) return null;
-
-        // Dummy nodes to act as starting points
-        DoublyListNode evenHead = new DoublyListNode(0);
-        DoublyListNode oddHead = new DoublyListNode(0);
-
-        DoublyListNode eTail = evenHead;
-        DoublyListNode oTail = oddHead;
         DoublyListNode curr = head;
-
+        DoublyListNode oddHead = new DoublyListNode(0);
+        DoublyListNode evenHead = new DoublyListNode(0);
+        DoublyListNode oTail = oddHead;
+        DoublyListNode eTail = evenHead;
         while (curr != null) {
             if (curr.val % 2 == 0) {
-                eTail.next = curr;
-                curr.prev = eTail;
-                eTail = eTail.next;
+                DoublyListNode n = new DoublyListNode(curr.val);
+                eTail.next = n;
+                n.prev = eTail;
+                eTail = n;
             } else {
-                oTail.next = curr;
-                curr.prev = oTail;
-                oTail = oTail.next;
+                DoublyListNode n = new DoublyListNode(curr.val);
+                oTail.next = n;
+                n.prev = oTail;
+                oTail = n;
             }
             curr = curr.next;
         }
-
-        // Terminate the odd list to avoid cycles
-        oTail.next = null;
-
-        // Connect Even list to Odd list
-        if (evenHead.next != null) {
-            eTail.next = oddHead.next;
-            if (oddHead.next != null) {
-                oddHead.next.prev = eTail;
-            }
-            // Fix the new head (skip dummy)
-            DoublyListNode newHead = evenHead.next;
-            newHead.prev = null;
-            return newHead;
-        } else {
-            // Only odd numbers exist
-            if (oddHead.next != null) oddHead.next.prev = null;
-            return oddHead.next;
-        }
+        eTail.next = oddHead.next;
+        return evenHead.next;
     }
 
-
     static void main(String[] args) {
-        DoublyListNode l1 = DoublyListNode.fromArray(new int[] {2,4,2,6,1,4,5,3,2,18});
+        DoublyListNode l1 = DoublyListNode.fromArray(new int[] {1,2,3,4,5,6,7,8,9,10});
         DoublyListNode result = evenOddLink(l1);
         DoublyListNode.printForward(result);
     }
