@@ -1,4 +1,4 @@
-package Basics;
+package TrickyQuests;
 
 import java.util.ArrayList;
 import java.util.Collections;

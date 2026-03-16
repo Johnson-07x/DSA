@@ -1,4 +1,4 @@
-package Basics;
+package TrickyQuests;
 
 public class SubsequenceOfString {
     static void subsequence(String s, String current, int index) {
