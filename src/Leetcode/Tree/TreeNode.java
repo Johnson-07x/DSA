@@ -8,42 +8,44 @@ public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-    TreeNode() {}
+
     TreeNode(int val) { this.val = val; }
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
 
-    static TreeNode root;
-    static public TreeNode insert(int[] arr) {
-        if (arr.length == 0 || arr[0] == -1) return root;
+    // Corrected Insert: Standard Level-Order (BFS) Construction
+    public static TreeNode insert(int[] arr) {
+        if (arr == null || arr.length == 0 || arr[0] == -1) return null;
 
+        TreeNode root = new TreeNode(arr[0]);
         Queue<TreeNode> q = new LinkedList<>();
-        root = new TreeNode(arr[0]);
         q.add(root);
+
         int i = 1;
         while (i < arr.length && !q.isEmpty()) {
             TreeNode curr = q.poll();
-            if (arr[i] != -1) {
-                curr.left = new TreeNode(arr[i]);
-                q.add(curr.left);
-            }
-            i++;
 
-            if (i > arr.length || q.isEmpty()) break;
-
-            if (arr[i] != -1) {
-                curr.right = new TreeNode(arr[i]);
-                q.add(curr.right);
+            // Left Child
+            if (i < arr.length) {
+                if (arr[i] != -1) {
+                    curr.left = new TreeNode(arr[i]);
+                    q.add(curr.left);
+                }
+                i++;
             }
-            i++;
+
+            // Right Child
+            if (i < arr.length) {
+                if (arr[i] != -1) {
+                    curr.right = new TreeNode(arr[i]);
+                    q.add(curr.right);
+                }
+                i++;
+            }
         }
         return root;
     }
 
-    static public void levelOrder() {
+    public static void levelOrder(TreeNode root) {
+        if (root == null) return;
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while (!q.isEmpty()) {
@@ -54,5 +56,6 @@ public class TreeNode {
         }
         System.out.println();
     }
- }
+
+}
 
