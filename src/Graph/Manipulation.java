@@ -12,6 +12,11 @@ public class Manipulation {
         g.addEdge(4,7);
         g.addEdge(5,7);
         g.addEdge(6,7);
+
+        System.out.println(g.adjList);
+        g.BFS(0);
+        System.out.println();
+
         g.DFS(0, new boolean[8]);
     }
 }
