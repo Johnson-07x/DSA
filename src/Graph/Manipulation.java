@@ -2,7 +2,7 @@ package Graph;
 
 public class Manipulation {
     static void main(String[] args) {
-        Graph g = new Graph(8);
+        Graph g = new Graph(8, false);
         g.addEdge(0,1);
         g.addEdge(0,2);
         g.addEdge(0,3);
