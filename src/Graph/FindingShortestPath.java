@@ -2,7 +2,7 @@ package Graph;
 
 public class FindingShortestPath {
     static void main(String[] args) {
-        Graph g = new Graph(7);
+        Graph g = new Graph(7, false);
         g.addEdge(0,1);
         g.addEdge(1,2);
         g.addEdge(2,3);
