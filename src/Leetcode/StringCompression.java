@@ -4,29 +4,26 @@ package Leetcode;
 // Leetcode no.443
 public class StringCompression {
     static public int compress(char[] chars) {
-        char prev = 0;
-        boolean changed = false;
-        int length = 0;
-        StringBuilder s = new StringBuilder();
-        for (int i = 0; i < chars.length; i++) {
-            if (prev != chars[i]) {
-                prev = chars[i];
-                length = 1;
-                changed = true;
-            } else {
-                length++;
+        int n = chars.length;
+        int idx = 0;
+        for (int i = 0; i < n; i++) {
+            char ch = chars[i];
+            int count = 0;
+            while (i < n && chars[i] == ch) {
+                count++;
+                i++;
             }
-
-            if (changed) {
-                if (length == 1) s.append(prev);
-                else {
-                    s.append(prev);
-                    s.append(length);
+            if (count == 1) {
+                chars[idx++] = ch;
+            } else {
+                chars[idx++] = ch;
+                for (char digit : Integer.toString(count).toCharArray()) {
+                    chars[idx++] = digit;
                 }
             }
+            i--;
         }
-
-        return s.toString().length();
+        return idx;
     }
 
     static void main(String[] args) {
