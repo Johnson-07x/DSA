@@ -1,10 +1,30 @@
 package Leetcode.LinkedList;
 
-// to be continued../
 // Leetcode no.25
 public class ReverseNodesInKgroup {
     static public ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null || k == 1) return head;
 
+        ListNode curr = head;
+        for (int i = 0; i < k; i++) {
+            if (curr == null) return head;
+            curr = curr.next;
+        }
+
+        ListNode prev = null;
+        ListNode next = null;
+
+        curr = head;
+        for (int i = 0; i < k; i++) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head.next = reverseKGroup(curr, k);
+
+        return prev;
     }
 
     static void main(String[] args) {
