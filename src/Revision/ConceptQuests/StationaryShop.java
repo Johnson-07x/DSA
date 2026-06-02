@@ -1,6 +1,4 @@
-package Revision;
-
-import java.util.*;
+package Revision.ConceptQuests;
 
 public class StationaryShop {
     static int factorial(int n) {
