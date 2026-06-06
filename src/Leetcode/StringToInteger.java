@@ -3,33 +3,33 @@ package Leetcode;
 // Leetcode no.8
 public class StringToInteger {
     static public int myAtoi(String s) {
-        long num = 0;
-        boolean positive = false;
-        boolean negative = false;
-        boolean numAdded = false;
-        s = s.replace(" ", "");
-        System.out.println(s);
-        for (char c : s.toCharArray()) {
-            if (c == '+') {
-                if (numAdded) break;
-            }
-            if (c == '-') {
-                if (numAdded) break;
-                negative = true;
-                continue;
-            }
-            if (!Character.isDigit(c)) break;
-            if (Character.isDigit(c)) {
-                numAdded = true;
-                num = (num * 10) + Integer.parseInt(String.valueOf(c));
-            }
+        int i = 0;
+        int n = s.length();
+        int sign = 1;
+        long result = 0;
+
+        while (i < n && s.charAt(i) == ' ') {
+            i++;
         }
-        if (negative) num = -num;
-        return Math.round(num);
+
+        if (i < n && s.charAt(i) == '-' || s.charAt(i) == '+') {
+            sign = (s.charAt(i) == '-') ? -1 : 1;
+            i++;
+        }
+
+        while (i < n && Character.isDigit(s.charAt(i))) {
+            result = result * 10 + (s.charAt(i) - '0');
+
+            if (result >= Integer.MAX_VALUE) return Integer.MAX_VALUE;
+            if (result <= Integer.MIN_VALUE) return Integer.MIN_VALUE;
+            i++;
+        }
+
+        return (int) (sign * result);
     }
 
     static void main(String[] args) {
-        String s = "   0-1";
+        String s = "   -042";
         int result = myAtoi(s);
 
         System.out.println(result);
