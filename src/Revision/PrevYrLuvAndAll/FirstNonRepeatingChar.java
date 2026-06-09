@@ -22,5 +22,6 @@ public class FirstNonRepeatingChar {
         String s = "swiwsis";
         char result = firstNonRepeatingChar(s);
         System.out.println(result);
+
     }
 }
