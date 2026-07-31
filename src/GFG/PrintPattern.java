@@ -21,6 +21,6 @@ public class PrintPattern {
     public static void main(String[] args) {
         int n = 10;
         ArrayList<Integer> result = pattern(n);
-        System.out.println(result);
+        System.out.println(result); 
     }
 }
